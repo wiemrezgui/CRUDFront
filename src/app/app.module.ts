@@ -8,6 +8,7 @@ import { MainComponent } from './components/main/main.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

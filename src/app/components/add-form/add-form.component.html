@@ -2,10 +2,10 @@
     <h1 class="title">Add Plat</h1>
     <div class="content">
     <div class="inputs">
-    <form (ngSubmit)="addplat()">
-    <input type="text" name="plat" [(ngModel)]="plat.name" placeholder="Plat">
-    <input type="text" name="price" [(ngModel)]="plat.price" placeholder="price">
-    <button type="submit" >Add Plat</button>
+    <form #addForm="ngForm" (ngSubmit)="addRepas(addForm)">
+    <input type="text" name="plat" [(ngModel)]="plats.name" placeholder="Plat">
+    <input type="text" name="price" [(ngModel)]="plats.price" placeholder="price">
+    <button type="submit" id="idbtn" >Add Plat</button>
 </form>
   </div>
 </div>

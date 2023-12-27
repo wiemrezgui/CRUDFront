@@ -30,81 +30,20 @@
              </thead>
              
              <tbody>
-                 <tr>
+                <tr *ngFor="let item of plats">
                 <td>
-                <td>Trio Fajitas</td>
-                <td>49,90 DT</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
                 <td>
-                <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                <a href="#editEmployeeModal" routerLink="/platedit/+item.id" class="edit" data-toggle="modal">
+                  <i class="material-icons" data-toggle="tooltip" title="Edit" (click)="navigateToEdit(item.id,'platedit')">&#xE254;</i>
                   </a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                  </a>
-                </td>
-                </tr>
-                
-                
-                <tr>
-                <td>
-                <td>Trio Fajitas</td>
-                <td>49,90 DT</td>
-                <td>
-                <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                  </a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                  <a href="#deleteEmployeeModal"  class="delete" data-toggle="modal">
+                  <i class="material-icons" data-toggle="tooltip" title="Delete" (click)="deleteRepas(item.id)">&#xE872;</i>
                   </a>
                 </td>
-                </tr>
-                
-                
-                <tr>
-                <td>
-                <td>Trio Fajitas</td>
-                <td>49,90 DT</td>
-                <td>
-                <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                  </a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                  </a>
-                </td>
-                </tr>
-                
-                 <tr>
-                <td>
-                <td>Trio Fajitas</td>
-                <td>49,90 DT</td>
-                <td>
-                <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                  </a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                  </a>
-                </td>
-                </tr>
-                
-                 <tr>
-                <td>
-                <td>Trio Fajitas</td>
-                <td>49,90 DT</td>
-                <td>
-                <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
-                  </a>
-                  <a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
-                  <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
-                  </a>
-                </td>
-                </tr>
-                
-             </tbody>
-             
-             
+                </tr>  
+             </tbody>             
           </table>
         </div>
           </div>

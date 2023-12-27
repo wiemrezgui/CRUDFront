@@ -1,5 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Repas } from 'src/app/model/repas.model';
+import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
   selector: 'app-edit-form',
@@ -7,27 +11,46 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-form.component.css']
 })
 export class EditFormComponent {
-  plat:any={}
-  id:any
+  plats: any = {}
+  id: any
   data:any={}
   obj:any={}
-  constructor(private activatedroute:ActivatedRoute){}
-  ngOnInit(){
-    this.id=this.activatedroute.snapshot.paramMap.get("id")
+  constructor(private crudService: CrudService,private activatedrouter:ActivatedRoute) { }
+  ngOnInit() {
+    this.id=this.activatedrouter.snapshot.paramMap.get("id")
     if (this.id != null && this.id != undefined){
-      this.getplatById()
-    }
-  }
-  getplatById(){
+      this.getPlatById()
+  }}
+  getPlatById(){
     this.data=JSON.parse(localStorage.getItem("plats") || '[]')
     for (let i = 0; i < this.data.length; i++) {
       if (this.data[i].id ==this.id) {
-        this.plat=this.data[i]
+        this.obj=this.data[i]
   }}}
-    editplat(){
-      this.data=JSON.parse(localStorage.getItem("plats") || '[]')
-      this.data[this.id]=this.plat
-      localStorage.setItem("plats", JSON.stringify(this.data));
-  
+  getAllRepas() {
+    this.crudService.getAllRepas().subscribe(
+      (response: Repas[]) => {
+        this.plats = response;
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.message);
+      }
+    );
+  }
+  updateRepas(repas: Repas): void {
+    const button = document.getElementById("idbtn");
+    if (button) {
+      button.click();
     }
+    this.crudService.updateRepas(repas).subscribe(
+      (response: Repas) => {
+        console.log(response);
+        this.getAllRepas();
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.message);
+      },
+    );
+
+  }
 }
